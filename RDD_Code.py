@@ -18,7 +18,7 @@ data_heterogenous = sc.parallelize([
 print(data_heterogenous)
 
 ##Example-3
-#Left Join transformation and intersection
+#Left Join, Join and intersection transformation
 print("\nOutput of example 3 is : ")
 rdd1 = sc.parallelize([('a', 1), ('b', 4), ('c',10)])
 rdd2 = sc.parallelize([('a', 4), ('a', 1), ('b', '6'), ('d', 15)])
@@ -26,6 +26,9 @@ rdd3 = rdd1.leftOuterJoin(rdd2)
 print(rdd3.collect())
 rdd4 = rdd1.intersection(rdd2)
 print(rdd4.collect())
+rdd5 = rdd1.join(rdd2)
+print(rdd5.collect())
+
 
 ###############################################################################
 # Output                                                                      #
@@ -41,3 +44,4 @@ Output of example 2 is :
 Output of example 3 is : 
 [('b', (4, '6')), ('c', (10, None)), ('a', (1, 4)), ('a', (1, 1))]
 [('a', 1)]
+[('b', (4, '6')), ('a', (1, 4)), ('a', (1, 1))]
